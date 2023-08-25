@@ -1,0 +1,19 @@
+Task 1. Sign in to the Google Cloud
+
+Task 2. Confirm that needed APIs are enabled
+
+Task 3. Start a Kubernetes Engine cluster
+In Google Cloud console, on the top right toolbar, click the Activate Cloud Shell button.
+export MY_ZONE="us-east4-c"
+gcloud container clusters create webfrontend --zone $MY_ZONE --num-nodes 2     (create a cluster as Kubernetes Engine provisions virtual machines for you)
+
+kubectl version
+
+Task 4. Run and deploy a container
+kubectl create deploy nginx --image=nginx:1.17.10
+kubectl get pods
+kubectl expose deployment nginx --port 80 --type LoadBalancer
+kubectl get services
+kubectl scale deployment nginx --replicas 3
+kubectl get pods
+kubectl get services
